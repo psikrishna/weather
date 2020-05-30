@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:weather/model/weather_forecast_model.dart';
+import 'package:weather/util/convert_icon.dart';
 import 'package:weather/util/forecast_util.dart';
 
 Widget midView(AsyncSnapshot<WeatherForecastModel> snapshot) {
@@ -28,10 +29,10 @@ Widget midView(AsyncSnapshot<WeatherForecastModel> snapshot) {
             ),
           ),
           SizedBox(height: 10.0),
-          Icon(
-            Icons.wb_sunny,
-            size: 145,
-          ),
+          getWeatherIcon(
+              weatherDescription: forecastList[0].weather[0].main,
+              color: Colors.pinkAccent,
+              size: 145),
           Padding(
             padding:
                 const EdgeInsets.symmetric(vertical: 12.0, horizontal: 12.0),
@@ -69,44 +70,35 @@ Widget midView(AsyncSnapshot<WeatherForecastModel> snapshot) {
                     ],
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text(
-                              "${forecastList[0].main.humidity.toStringAsFixed(0)}%"),
-                          Icon(
-                            Icons.hot_tub,
-                            size: 20.0,
-                            color: Colors.brown,
-                          ),
-                        ],
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                          "${forecastList[0].main.humidity.toStringAsFixed(0)}%"),
+                      Icon(
+                        Icons.hot_tub,
+                        size: 20.0,
+                        color: Colors.brown,
                       ),
-                    )
-                  ],
+                    ],
+                  ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text("${forecastList[0].main.tempMax}°C"),
-                          Icon(
-                            Icons.wb_sunny,
-                            size: 20.0,
-                            color: Colors.brown,
-                          ),
-                        ],
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                          "${forecastList[0].main.tempMax.toStringAsFixed(0)}°C"),
+                      Icon(
+                        Icons.wb_sunny,
+                        size: 20.0,
+                        color: Colors.brown,
                       ),
-                    )
-                  ],
+                    ],
+                  ),
                 )
               ],
             ),
