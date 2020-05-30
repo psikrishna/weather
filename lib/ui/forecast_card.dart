@@ -12,7 +12,11 @@ Widget forecastCard(AsyncSnapshot<WeatherForecastModel> snapshot,int index){
     mainAxisAlignment: MainAxisAlignment.start,
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
-
+      //Text(Util.getFormatDate(new DateTime.fromMillisecondsSinceEpoch(forecastList[index].dt*1000)).toString()),
+      Text(dayOfWeek),
+      Text(index.toString()),
+      //Text((Util.getFormatDate(new DateTime.fromMillisecondsSinceEpoch(forecastList[index].dt*1000))).toString().split(",")[0]),
+      Text("${forecastList[index].dt.toString()}"),
     ],
   );
 }
