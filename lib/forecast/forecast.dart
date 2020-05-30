@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:weather/model/weather_forecast_model.dart';
 import 'package:weather/network/network.dart';
+import 'package:weather/ui/bottom_view.dart';
 import 'package:weather/ui/mid_view.dart';
 
 class weatherForecast extends StatefulWidget {
@@ -37,6 +38,7 @@ class _weatherForecastState extends State<weatherForecast> {
                     return Column(
                       children: <Widget>[
                         midView(snapshot),
+                        bottomView(snapshot, context),
                       ],
                     );
                   } else {
