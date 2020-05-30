@@ -59,22 +59,25 @@ class _weatherForecastState extends State<weatherForecast> {
 
   //search bar
   textFieldView() {
-    return Container(
-      child: TextField(
-        decoration: InputDecoration(
-          hintText: "Enter City Name",
-          prefixIcon: Icon(Icons.search),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10.0),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        child: TextField(
+          decoration: InputDecoration(
+            hintText: "Enter City Name",
+            prefixIcon: Icon(Icons.search),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+            contentPadding: EdgeInsets.all(8.0),
           ),
-          contentPadding: EdgeInsets.all(8.0),
+          onSubmitted: (value) {
+            setState(() {
+              _cityName = value;
+              forecastObject = getWeather(cityName: _cityName);
+            });
+          },
         ),
-        onSubmitted: (value) {
-          setState(() {
-            _cityName = value;
-            forecastObject = getWeather(cityName: _cityName);
-          });
-        },
       ),
     );
   }
